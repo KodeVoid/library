@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+    <title>Book List</title>
+</head>
+<body class="bg-gray-50 p-6">
+    <h1 class="text-center text-3xl font-mono font-bold mb-8">All Books</h1>
+
+    <div class="space-y-6 max-w-3xl mx-auto">
+        {% for book in book_list %}
+        <div class="p-4 bg-white shadow rounded-2xl flex flex-col md:flex-row md:items-center md:justify-between">
+            <div>
+                <h2 class="text-xl font-semibold">Title: {{ book.title }}</h2>
+                {% if book.subtitle %}
+                <p class="text-gray-600">Subtitle: {{ book.subtitle }}</p>
+                {% endif %}
+                <p class="text-gray-700">Author: {{ book.author }}</p>
+                <p class="text-gray-700">ISBN: {{ book.isbn }}</p>
+            </div>
+        </div>
+        {% empty %}
+        <p class="text-center text-gray-500">No books available.</p>
+        {% endfor %}
+    </div>
+</body>
+</html>
